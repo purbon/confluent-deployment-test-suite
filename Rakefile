@@ -28,4 +28,11 @@ namespace :spec do
       t.pattern = "spec/{base,#{role}}/*_spec.rb"
     end
   end
+
+  desc "Run test only for the AK SSL configuration"
+  RSpec::Core::RakeTask.new("ssl") do |t|
+    ENV['TARGET_HOST'] = hosts[0]
+    t.pattern = "spec/ak/ssl_spec.rb"
+  end
+
 end

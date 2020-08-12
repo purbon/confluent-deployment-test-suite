@@ -2,6 +2,8 @@ require 'serverspec'
 require 'net/ssh'
 require 'type/kafka_producer'
 require 'type/kafka_consumer'
+require 'type/keystore'
+require 'command/keystore'
 
 set :backend, :ssh
 

@@ -5,7 +5,7 @@ topics = %w(
 )
 
 topics.each do |topic|
-  command="kafka-topics --bootstrap-server localhost:9092 --describe --topic #{topic}"
+  command="kafka-topics --bootstrap-server localhost:9092 --command-config /root/client.conf --describe --topic #{topic}"
   describe command(command) do
     its(:stdout) { should contain('ReplicationFactor:3') }
     its(:stdout) { should contain('PartitionCount:12') }
@@ -18,7 +18,7 @@ describe file('/etc/kafka/server.properties') do
 
   it { should be_file }
   its(:content) { should match /num\.partitions\=1/ }
-  its(:content) { should match /broker\.rack/ }
-  its(:content) { should match /allow\.everyone\.if\.no\.acl\.found\=false/ }
-  its(:content) { should match /delete\.topic\.enable\=false/ }
+  xit(:content) { should match /broker\.rack/ }
+  xit(:content) { should match /allow\.everyone\.if\.no\.acl\.found\=false/ }
+  xit(:content) { should match /delete\.topic\.enable\=false/ }
 end
