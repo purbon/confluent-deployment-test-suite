@@ -5,14 +5,14 @@ task :spec    => 'spec:all'
 task :default => :spec
 
 hosts = %w(
-  ak1.gcp.cp.com.
-  ak0.gcp.cp.com.
-  ak2.gcp.cp.com.
-  ak4.gcp.cp.com.
-  ak3.gcp.cp.com.
-  zk2.gcp.cp.com.
-  zk0.gcp.cp.com.
-  zk1.gcp.cp.com.
+  ak0.gcp.cp.com
+  ak1.gcp.cp.com
+  ak2.gcp.cp.com
+  ak4.gcp.cp.com
+  ak3.gcp.cp.com
+  zk2.gcp.cp.com
+  zk0.gcp.cp.com
+  zk1.gcp.cp.com
 )
 
 namespace :spec do
@@ -27,6 +27,12 @@ namespace :spec do
       ENV['TARGET_HOST'] = host
       t.pattern = "spec/{base,#{role}}/*_spec.rb"
     end
+  end
+
+  desc "Run test only for the AK dataflow"
+  RSpec::Core::RakeTask.new("flow") do |t|
+    ENV['TARGET_HOST'] = hosts[0]
+    t.pattern = "spec/ak/dataflow_spec.rb"
   end
 
   desc "Run test only for the AK SSL configuration"
