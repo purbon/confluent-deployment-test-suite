@@ -19,7 +19,7 @@ module Serverspec
       def valid?
         @total = 0
         consumerThread = Thread.new do
-          kafka = Kafka.new(@brokers, @config)
+          kafka = Kafka.new(@brokers, **@config)
           consumer = kafka.consumer(group_id: "server-spec")
           consumer.subscribe(@topic)
           consumer.each_message do |message|

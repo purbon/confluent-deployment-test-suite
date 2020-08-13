@@ -1,19 +1,16 @@
 require 'rake'
 require 'rspec/core/rake_task'
+require 'yaml'
 
 task :spec    => 'spec:all'
 task :default => :spec
 
-hosts = %w(
-  ak0.gcp.cp.com
-  ak1.gcp.cp.com
-  ak2.gcp.cp.com
-  ak4.gcp.cp.com
-  ak3.gcp.cp.com
-  zk2.gcp.cp.com
-  zk0.gcp.cp.com
-  zk1.gcp.cp.com
-)
+config = YAML.load_file('cluster.yml')
+
+hosts = config["kafka"]
+        .concat(config["zookeeper"])
+        .concat(config["connect"])
+        .concat(config["schema-registry"])
 
 namespace :spec do
 

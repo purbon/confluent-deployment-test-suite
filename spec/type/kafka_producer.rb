@@ -18,7 +18,7 @@ module Serverspec
       def valid?
         @valid = true
         begin
-          kafka = Kafka.new([@brokers], @config)
+          kafka = Kafka.new([@brokers], **@config)
           producer = kafka.producer
           10.times do |i|
             producer.produce("test-message#{i}", topic: "test-topic")

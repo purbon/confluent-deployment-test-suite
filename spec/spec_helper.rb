@@ -4,6 +4,7 @@ require 'type/kafka_producer'
 require 'type/kafka_consumer'
 require 'type/keystore'
 require 'command/keystore'
+require 'yaml'
 
 set :backend, :ssh
 
@@ -28,6 +29,16 @@ options[:user] ||= Etc.getlogin
 
 set :host,        options[:host_name] || host
 set :ssh_options, options
+
+@config ||= YAML.load_file('cluster.yml')
+
+def kafka_hosts
+  @config["kafka"]
+end
+
+def zookeeper_hosts
+  @config["zookeeper"]
+end
 
 # Disable sudo
 # set :disable_sudo, true
