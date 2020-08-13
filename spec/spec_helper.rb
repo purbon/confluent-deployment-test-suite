@@ -40,6 +40,10 @@ def zookeeper_hosts
   @config["zookeeper"]
 end
 
+def schema_registry_hosts
+  @config["schema-registry"]
+end
+
 # Disable sudo
 # set :disable_sudo, true
 
