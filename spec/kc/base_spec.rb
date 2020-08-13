@@ -15,6 +15,6 @@ end
 connect_hosts.each do |host|
   describe command("curl -k https://#{host}:8083") do
     its(:exit_status) { should eq 0 }
-    its(:stdout) { should_not be_empty }
+    its(:stdout)      { should_not be_empty }
   end
 end
