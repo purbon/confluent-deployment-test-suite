@@ -24,6 +24,11 @@ module Serverspec
         content.stdout.include?("Keystore type: PKCS12")
       end
 
+      def valid_subject?(subject) 
+        content = @runner.get_keystore_file(@file, @password)
+        content.stdout.include?(subject)
+      end
+
     end
 
     def key_store(file, password)
