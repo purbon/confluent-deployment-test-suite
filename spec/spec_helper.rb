@@ -44,6 +44,10 @@ def schema_registry_hosts
   @config["schema-registry"]
 end
 
+def connect_hosts
+  @config["connect"]
+end
+
 # Disable sudo
 # set :disable_sudo, true
 

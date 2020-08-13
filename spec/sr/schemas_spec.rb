@@ -9,6 +9,7 @@ schema_registry_hosts.each do |host|
 
    describe command(create_schema_cmd) do
      its(:exit_status) { should eq 0 }
+     its(:stdout) { should_not be_empty }
    end
 
    read_schema_cmd = %{
@@ -17,6 +18,7 @@ schema_registry_hosts.each do |host|
 
     describe command(read_schema_cmd) do
       its(:exit_status) { should eq 0 }
+      its(:stdout) { should_not be_empty }
     end
 
 end
