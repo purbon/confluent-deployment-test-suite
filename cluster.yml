@@ -12,3 +12,5 @@ connect:
   - kc1.gcp.cp.com
 schema-registry:
   - sr0.gcp.cp.com
+control-center:
+  - c3.gcp.cp.com

@@ -48,6 +48,10 @@ def connect_hosts
   @config["connect"]
 end
 
+def control_center_hosts
+  @config["control-center"]
+end
+
 # Disable sudo
 # set :disable_sudo, true
 

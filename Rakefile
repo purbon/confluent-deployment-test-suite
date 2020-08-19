@@ -15,6 +15,7 @@ hosts = config["kafka"].clone
         .concat(config["zookeeper"])
         .concat(config["connect"])
         .concat(config["schema-registry"])
+        .concat(config["control-center"])
 
 namespace :spec do
 
