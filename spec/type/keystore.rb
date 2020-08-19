@@ -24,9 +24,9 @@ module Serverspec
         content.stdout.include?("Keystore type: PKCS12")
       end
 
-      def valid_subject?(subject) 
+      def valid_subject?(regexp)
         content = @runner.get_keystore_file(@file, @password)
-        content.stdout.include?(subject)
+        regexp.match?(content.stdout)
       end
 
     end

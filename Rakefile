@@ -10,6 +10,7 @@ config = YAML.load_file('cluster.yml')
 kafka_hosts = config["kafka"]
 connect_hosts = config["connect"]
 schema_registry_hosts = config["schema-registry"]
+control_center_hosts = config["control-center"]
 
 hosts = config["kafka"].clone
         .concat(config["zookeeper"])
@@ -37,7 +38,7 @@ namespace :spec do
     t.pattern = "spec/ak/flow/dataflow_spec.rb"
   end
 
-  ssl_hosts = kafka_hosts | schema_registry_hosts | connect_hosts
+  ssl_hosts = kafka_hosts | schema_registry_hosts | connect_hosts | control_center_hosts
   task :ssl => ssl_hosts.map {|h| 'ssl:' + h.split('.')[0] }
   ssl_hosts.each do |host|
     short_name = host.split('.')[0]
@@ -46,7 +47,7 @@ namespace :spec do
     desc "Run test for the AK SSL configuration in #{host}"
     RSpec::Core::RakeTask.new("ssl:#{short_name}") do |t|
       ENV['TARGET_HOST'] = host
-      t.pattern = "spec/ssl/ssl_spec.rb"
+      t.pattern = "spec/ssl/#{role}/ssl_spec.rb"
     end
   end
 
