@@ -28,5 +28,5 @@ end
 
 describe command("systemctl show confluent-server | grep LimitNOFILE") do
   its(:exit_status) { should eq 0 }
-  its(:stdout)      { should eq "LimitNOFILE=500000\n" }
+  its(:stdout)      { should eq "LimitNOFILE=1000000\n" }
 end

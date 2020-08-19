@@ -3,8 +3,6 @@ kafka:
   - ak0.gcp.cp.com
   - ak1.gcp.cp.com
   - ak2.gcp.cp.com
-  - ak3.gcp.cp.com
-  - ak4.gcp.cp.com
 zookeeper:
   - zk0.gcp.cp.com
   - zk1.gcp.cp.com
