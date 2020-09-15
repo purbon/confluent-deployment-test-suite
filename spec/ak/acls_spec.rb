@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "acls test" do
+describe "topic level acls should" do
 
   @command="kafka-acls --bootstrap-server #{ENV['TARGET_HOST']}:#{kafka_port} --command-config /root/client.conf --list"
   @fixtures = Dir.glob("spec/fixtures/acls/*")
@@ -15,6 +15,21 @@ describe "acls test" do
       it "should match stdout" do
         stdout = subject.stdout.gsub(/\n|\s/, "")
         expect(stdout).to eq result.gsub(/\n|\s/, "")
+      end
+    end
+  end
+
+end
+
+describe "global level acls should" do
+
+  @command="kafka-acls --bootstrap-server #{ENV['TARGET_HOST']}:#{kafka_port} --command-config /root/client.conf --list"
+  @fixture = File.read("spec/fixtures/global-acls.fixture")
+
+  describe command(@command) do
+      xit "should match stdout" do
+        stdout = subject.stdout.gsub(/\n|\s/, "")
+        expect(stdout).to eq @fixture.gsub(/\n|\s/, "")
       end
     end
   end
