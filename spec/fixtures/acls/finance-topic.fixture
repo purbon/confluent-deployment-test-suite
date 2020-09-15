@@ -1,0 +1,9 @@
+Current ACLs for resource `ResourcePattern(resourceType=TOPIC, name=finance-topic, patternType=LITERAL)`:
+ 	(principal=User:alice, host=host-1, operation=READ, permissionType=ALLOW)
+	(principal=User:alice, host=host-2, operation=WRITE, permissionType=ALLOW)
+	(principal=User:alice, host=host-2, operation=READ, permissionType=ALLOW)
+	(principal=User:alice, host=host-1, operation=WRITE, permissionType=ALLOW)
+	(principal=User:fred, host=host-2, operation=READ, permissionType=ALLOW)
+	(principal=User:fred, host=host-1, operation=WRITE, permissionType=ALLOW)
+	(principal=User:fred, host=host-1, operation=READ, permissionType=ALLOW)
+	(principal=User:fred, host=host-2, operation=WRITE, permissionType=ALLOW)

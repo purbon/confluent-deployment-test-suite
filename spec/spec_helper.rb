@@ -32,6 +32,10 @@ set :ssh_options, options
 
 @config ||= YAML.load_file('cluster.yml')
 
+
+def kafka_port
+  ENV['KAFKA_PORT'] || 9092
+end
 def kafka_hosts
   @config["kafka"]
 end
