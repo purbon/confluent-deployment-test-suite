@@ -24,7 +24,7 @@ end
 describe "global level acls should" do
 
   @command="kafka-acls --bootstrap-server #{ENV['TARGET_HOST']}:#{kafka_port} --command-config /root/client.conf --list"
-  @fixture = File.read("spec/fixtures/global-acls.fixture")
+  @fixture = File.read("spec/fixtures/global-acls.fixture") rescue ""
 
   describe command(@command) do
       xit "should match stdout" do
@@ -32,6 +32,5 @@ describe "global level acls should" do
         expect(stdout).to eq @fixture.gsub(/\n|\s/, "")
       end
     end
-  end
 
 end
