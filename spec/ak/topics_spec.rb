@@ -14,8 +14,13 @@ describe "topic creation" do
 
   @admin_cmd = "#{base_command} #{admin_user} #{admin_topic_attr}"
 
+  before(:each) do
+      cmd = command("#{base_command} #{admin_user} --delete --topic admin.topic.foo")
+      cmd.exit_status
+  end
+
   describe command(@admin_cmd) do
-     its(:stdout) { should match /Created topic admin.topic.foo/ }
+    its(:stdout) { should match /Created topic admin.topic.foo/ }
   end
 
   non_admin_topic_attr = "--create --topic #{non_admin_topic_name} --partitions 3 --replication-factor 3"
